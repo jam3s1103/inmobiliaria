@@ -1,0 +1,4 @@
+Reemplaza este archivo por la foto real del lote 1.
+Nombre: lote1.jpg
+Tamaño recomendado: 600 x 350 píxeles
+Formato: JPG (comprimido para web, menos de 200KB)

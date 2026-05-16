@@ -1,0 +1,1048 @@
+/* ================================================================
+   INMOPERU — Hoja de Estilos Principal
+   Archivo: css/styles.css
+
+   TABLA DE CONTENIDOS:
+   1.  Variables de color y fuentes  ← EDITA AQUÍ LOS COLORES
+   2.  Reset y base
+   3.  Navbar
+   4.  Banner de urgencia
+   5.  Hero (primera pantalla)
+   6.  Secciones generales
+   7.  Catálogo de lotes
+   8.  Beneficios
+   9.  Testimonios
+   10. Proceso
+   11. CTA Final
+   12. Footer
+   13. Botón flotante WhatsApp
+   14. Animaciones
+   15. Responsive (móvil)
+================================================================ */
+
+
+/* ================================================================
+   1. VARIABLES — Edita aquí para cambiar colores de toda la página
+================================================================ */
+:root {
+  /* ── Colores principales ── */
+  --gold:         #C9A84C;   /* ← dorado principal. Cámbialo por el color de tu marca */
+  --gold-light:   #E8D5A3;   /* ← dorado claro para hovers */
+  --dark:         #0D1117;   /* ← fondo oscuro principal */
+  --dark2:        #161C24;   /* ← fondo secundario (cards) */
+  --dark3:        #1E2630;   /* ← fondo terciario (inputs) */
+  --text:         #F0EDE6;   /* ← color de texto principal */
+  --muted:        #8A8A8A;   /* ← texto secundario / descripción */
+  --green:        #2D6A4F;   /* ← verde para detalles */
+  --green-light:  #40916C;   /* ← verde claro (cuotas) */
+  --wa-green:     #25d366;   /* ← verde WhatsApp (no cambiar) */
+  --border:       rgba(201, 168, 76, 0.2); /* ← borde semitransparente */
+
+  /* ── Tipografía ── */
+  --font-serif:  'Cormorant Garamond', Georgia, serif; /* títulos elegantes */
+  --font-sans:   'Outfit', 'Segoe UI', sans-serif;     /* texto general */
+
+  /* ── Espaciado ── */
+  --radio:       12px;   /* redondeo de tarjetas */
+  --radio-sm:    8px;
+  --radio-lg:    16px;
+
+  /* ── Transiciones ── */
+  --trans:       all 0.25s ease;
+}
+
+
+/* ================================================================
+   2. RESET Y BASE
+================================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--dark);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+
+/* ================================================================
+   3. NAVBAR
+================================================================ */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: rgba(13, 17, 23, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 0.5px solid var(--border);
+}
+
+/* EDITAR: cambia el color del logo aquí si cambias la paleta */
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.nav-logo span {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  font-size: 13px;
+  color: var(--muted);
+  transition: var(--trans);
+  font-weight: 400;
+}
+
+.nav-links a:hover {
+  color: var(--text);
+}
+
+/* Botón CTA del navbar */
+.nav-cta {
+  background: var(--gold);
+  color: var(--dark) !important;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: var(--radio-sm);
+  transition: var(--trans);
+  white-space: nowrap;
+}
+
+.nav-cta:hover {
+  background: var(--gold-light);
+  color: var(--dark) !important;
+}
+
+/* Hamburguesa (móvil) */
+.nav-hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+
+/* ================================================================
+   4. BANNER DE URGENCIA
+================================================================ */
+.urgencia-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 0.85rem 1.5rem;
+  font-size: 13px;
+  color: var(--text);
+  background: linear-gradient(90deg,
+    rgba(201,168,76,0.08),
+    rgba(64,145,108,0.08)
+  );
+  border-bottom: 0.5px solid var(--border);
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+/* EDITAR: puedes cambiar el color del punto a rojo, verde, etc. */
+.urg-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e63946;
+  flex-shrink: 0;
+  animation: pulso 1.5s infinite;
+}
+
+.urgencia-bar strong {
+  color: var(--gold);
+}
+
+
+/* ================================================================
+   5. HERO
+================================================================ */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5rem 2rem 4rem;
+  overflow: hidden;
+}
+
+/* Fondo degradado */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #0D1117 0%, #0D1117 40%, #1a2e1f 100%);
+  z-index: 0;
+}
+
+/* Patrón de cuadrícula decorativa */
+.hero-pattern {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image:
+    repeating-linear-gradient(0deg,   transparent, transparent 60px, rgba(201,168,76,0.5) 60px, rgba(201,168,76,0.5) 61px),
+    repeating-linear-gradient(90deg,  transparent, transparent 60px, rgba(201,168,76,0.5) 60px, rgba(201,168,76,0.5) 61px);
+  z-index: 1;
+}
+
+/* Círculo decorativo (derecha) */
+.hero-circle {
+  position: absolute;
+  right: -120px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(45,106,79,0.22) 0%, transparent 70%);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 640px;
+}
+
+/* Pastilla con contexto geográfico */
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  padding: 6px 14px;
+  border: 0.5px solid var(--border);
+  border-radius: 4px;
+}
+
+/* Título principal */
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+  line-height: 1.1;
+  color: var(--text);
+  margin-bottom: 1.2rem;
+  font-weight: 600;
+}
+
+/* Palabra en cursiva dorada — el gancho emocional */
+.hero-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* Subtítulo */
+.hero-sub {
+  font-size: 1rem;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 2.4rem;
+  font-weight: 300;
+  max-width: 480px;
+}
+
+/* Botones del hero */
+.hero-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 14px 28px;
+  border-radius: var(--radio-sm);
+  font-size: 14px;
+  font-weight: 600;
+  transition: var(--trans);
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  color: var(--dark);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--text);
+  padding: 14px 28px;
+  border-radius: var(--radio-sm);
+  border: 1px solid var(--border);
+  font-size: 14px;
+  font-weight: 400;
+  transition: var(--trans);
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* Cifras de confianza bajo los botones */
+.hero-trust {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 2rem;
+  border-top: 0.5px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.trust-n {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--gold);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.trust-l {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+
+/* ================================================================
+   6. SECCIONES GENERALES
+================================================================ */
+.seccion {
+  padding: 5rem 2rem;
+}
+
+.seccion-oscura {
+  background: var(--dark2);
+  border-top: 0.5px solid var(--border);
+  border-bottom: 0.5px solid var(--border);
+}
+
+.seccion-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Etiqueta pequeña sobre el título */
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+/* Título de sección */
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Descripción de sección */
+.section-sub {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+
+/* ================================================================
+   7. CATÁLOGO DE LOTES
+================================================================ */
+.lotes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 22px;
+}
+
+.lote-card {
+  position: relative;
+  background: var(--dark2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radio);
+  overflow: hidden;
+  transition: var(--trans);
+}
+
+.lote-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-5px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.3);
+}
+
+/* Badge de estado del lote */
+.lote-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 2;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* EDITAR: colores de los badges */
+.badge-disp   { background: rgba(45,106,79,.9);   color: #95d5b2; } /* verde: disponible */
+.badge-ult    { background: rgba(198,57,57,.85);   color: #ffd6d6; } /* rojo: último */
+.badge-reserv { background: rgba(201,168,76,.2);   color: var(--gold); } /* dorado: reservado */
+
+/* Placeholder de imagen (reemplaza con <img> cuando tengas fotos) */
+.lote-img-placeholder {
+  width: 100%;
+  height: 175px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, var(--dark3), var(--dark2));
+  position: relative;
+}
+
+/* Imagen real del lote */
+.lote-img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+}
+
+.lote-body {
+  padding: 1.2rem;
+}
+
+.lote-zona {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 6px;
+}
+
+.lote-name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  color: var(--text);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+/* Lista de características */
+.lote-specs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.spec {
+  font-size: 11px;
+  color: var(--muted);
+  padding: 3px 8px;
+  background: var(--dark3);
+  border-radius: 4px;
+  border: 0.5px solid var(--border);
+}
+
+.lote-price {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  color: var(--gold);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.lote-cuota {
+  font-size: 12px;
+  color: var(--green-light);
+  margin-top: 4px;
+  margin-bottom: 14px;
+}
+
+/* Botón de consulta por lote */
+.lote-btn {
+  display: block;
+  width: 100%;
+  padding: 10px 16px;
+  text-align: center;
+  background: transparent;
+  border: 0.5px solid var(--border);
+  color: var(--text);
+  border-radius: var(--radio-sm);
+  font-size: 13px;
+  font-weight: 500;
+  transition: var(--trans);
+  cursor: pointer;
+  font-family: var(--font-sans);
+}
+
+.lote-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+}
+
+
+/* ================================================================
+   8. BENEFICIOS
+================================================================ */
+.bene-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+.bene-item {
+  padding: 1.5rem;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radio);
+  background: var(--dark3);
+  transition: var(--trans);
+}
+
+.bene-item:hover {
+  border-color: var(--gold);
+}
+
+.bene-icon {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+  line-height: 1;
+}
+
+.bene-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.bene-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+
+/* ================================================================
+   9. TESTIMONIOS
+================================================================ */
+.test-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 18px;
+}
+
+.test-card {
+  background: var(--dark2);
+  border: 0.5px solid var(--border);
+  border-radius: var(--radio);
+  padding: 1.4rem;
+  transition: var(--trans);
+}
+
+.test-card:hover {
+  border-color: var(--gold);
+}
+
+/* EDITAR: color de las estrellas */
+.stars {
+  color: var(--gold);
+  font-size: 14px;
+  margin-bottom: 0.75rem;
+  letter-spacing: 2px;
+}
+
+.test-text {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.test-card footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.test-autor {
+  font-size: 13px;
+  color: var(--text);
+  font-weight: 500;
+}
+
+.test-lugar {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+
+/* ================================================================
+   10. PROCESO DE COMPRA
+================================================================ */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  counter-reset: steps;
+}
+
+.step-item {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border: 0.5px solid var(--border);
+  border-radius: var(--radio);
+  background: var(--dark3);
+  transition: var(--trans);
+}
+
+.step-item:hover {
+  border-color: var(--gold);
+}
+
+/* Número del paso */
+.step-num {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  color: rgba(201,168,76,0.25);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.step-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+
+.step-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+
+/* ================================================================
+   11. CTA FINAL
+================================================================ */
+.cta-final {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, var(--dark) 0%, #162218 100%);
+  border-top: 0.5px solid var(--border);
+}
+
+.cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-final h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  color: var(--text);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.cta-final h2 em {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.cta-final p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+/* Botón grande de WhatsApp */
+.btn-wa-final {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--wa-green);
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: var(--radio);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--trans);
+  font-family: var(--font-sans);
+  border: none;
+}
+
+.btn-wa-final:hover {
+  background: #1ebe5d;
+  transform: translateY(-3px);
+  color: #fff;
+}
+
+.cta-sub {
+  margin-top: 1rem;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.cta-sub strong {
+  color: var(--text);
+}
+
+
+/* ================================================================
+   12. FOOTER
+================================================================ */
+.footer {
+  background: var(--dark);
+  border-top: 0.5px solid var(--border);
+  padding: 1.5rem 2rem;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Logo del footer */
+.foot-logo {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+
+.foot-logo span {
+  color: var(--text);
+  font-weight: 400;
+}
+
+.foot-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.foot-nav a {
+  font-size: 12px;
+  color: var(--muted);
+  transition: var(--trans);
+}
+
+.foot-nav a:hover {
+  color: var(--text);
+}
+
+.foot-legal {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+
+/* ================================================================
+   13. BOTÓN FLOTANTE DE WHATSAPP
+================================================================ */
+.wa-flotante {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: var(--wa-green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  z-index: 999;
+  transition: var(--trans);
+}
+
+.wa-flotante:hover {
+  transform: scale(1.1);
+  background: #1ebe5d;
+}
+
+/* Tooltip al pasar el cursor */
+.wa-flotante::before {
+  content: 'Escríbenos';
+  position: absolute;
+  right: 66px;
+  background: var(--dark2);
+  color: var(--text);
+  font-size: 12px;
+  font-family: var(--font-sans);
+  padding: 5px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border: 0.5px solid var(--border);
+  pointer-events: none;
+}
+
+.wa-flotante:hover::before {
+  opacity: 1;
+}
+
+
+/* ================================================================
+   14. ANIMACIONES
+================================================================ */
+@keyframes pulso {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(0.8); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Animación de entrada escalonada en el hero */
+.hero-eyebrow { animation: fadeUp 0.65s ease both; animation-delay: 0.10s; }
+.hero-title   { animation: fadeUp 0.65s ease both; animation-delay: 0.20s; }
+.hero-sub     { animation: fadeUp 0.65s ease both; animation-delay: 0.30s; }
+.hero-actions { animation: fadeUp 0.65s ease both; animation-delay: 0.40s; }
+.hero-trust   { animation: fadeUp 0.65s ease both; animation-delay: 0.50s; }
+
+
+/* ================================================================
+   15. RESPONSIVE — Diseño para móvil
+================================================================ */
+
+/* Tablet: 768px hacia abajo */
+@media (max-width: 768px) {
+
+  /* Navbar: oculta links, muestra hamburguesa */
+  .nav-hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--dark);
+    padding: 1.5rem 2rem;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .nav-links.abierto {
+    display: flex;
+  }
+
+  header {
+    position: relative;
+  }
+
+  /* Hero más compacto en móvil */
+  .hero {
+    min-height: auto;
+    padding: 3rem 1.2rem 3rem;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .hero-sub {
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    padding: 14px 20px;
+  }
+
+  .hero-trust {
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  .hero-circle {
+    display: none;
+  }
+
+  /* Secciones más compactas */
+  .seccion {
+    padding: 3.5rem 1.2rem;
+  }
+
+  /* Lotes en columna única */
+  .lotes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Beneficios en 2 columnas */
+  .bene-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Testimonios en columna única */
+  .test-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Proceso en 2 columnas */
+  .steps-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Footer apilado */
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .foot-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* CTA final */
+  .cta-final {
+    padding: 4rem 1.2rem;
+  }
+
+  .btn-wa-final {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Móvil pequeño: 480px hacia abajo */
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.75rem;
+  }
+
+  .bene-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-trust {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .trust-item {
+    text-align: center;
+  }
+}
